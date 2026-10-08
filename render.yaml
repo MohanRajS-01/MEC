@@ -3,8 +3,12 @@ services:
     name: mec
     runtime: node
     plan: free
-    buildCommand: npm ci && NITRO_PRESET=node-server npm run build
-    startCommand: npm run preview -- --host 0.0.0.0 --port $PORT
+    buildCommand: npm ci && npm run build
+    startCommand: node .output/server/index.mjs
     envVars:
       - key: NODE_VERSION
         value: "22"
+      - key: NITRO_PRESET
+        value: render-com
+      - key: HOST
+        value: 0.0.0.0
